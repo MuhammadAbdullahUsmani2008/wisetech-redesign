@@ -582,6 +582,73 @@ p {
   z-index: 1;
   overflow: visible;
   padding-top: 10px;
+  animation: slideInRight 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(120px) rotate(5deg) scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-15px) rotate(-3deg) scale(1.05);
+  }
+  50% {
+    transform: translateX(10px) rotate(2deg) scale(0.98);
+  }
+  70% {
+    transform: translateX(-5px) rotate(-1deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-120px) rotate(-5deg) scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(15px) rotate(3deg) scale(1.05);
+  }
+  50% {
+    transform: translateX(-10px) rotate(-2deg) scale(0.98);
+  }
+  70% {
+    transform: translateX(5px) rotate(1deg) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) rotate(-3deg) scale(0.7);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-20px) rotate(4deg) scale(1.1);
+  }
+  45% {
+    transform: translateY(12px) rotate(-3deg) scale(0.95);
+  }
+  65% {
+    transform: translateY(-8px) rotate(2deg) scale(1.03);
+  }
+  85% {
+    transform: translateY(4px) rotate(-1deg) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
 }
 
 .hero__image img {
@@ -630,7 +697,7 @@ p {
 /* Floating AI Assistant Button */
 .ai-assistant {
   position: fixed;
-  bottom: 30px;
+  bottom: 90px;
   right: 30px;
   width: 56px;
   height: 56px;
@@ -705,6 +772,7 @@ p {
   font-size: 28px;
   color: var(--color-accent);
   transition: all var(--transition-base);
+  animation: slideInUp 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 }
 
 .service-card:hover .service-card__icon {
@@ -758,6 +826,7 @@ p {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  animation: slideInLeft 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 }
 
 .about__image-wrapper img {
@@ -901,6 +970,7 @@ p {
   font-size: 28px;
   color: var(--color-accent);
   transition: all var(--transition-base);
+  animation: slideInUp 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 }
 
 .process-card:hover .process-card__icon {
@@ -1049,6 +1119,15 @@ p {
   justify-content: center;
   opacity: 0.5;
   transition: opacity var(--transition-fast);
+  animation: slideInUp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+}
+
+.logo-slider__item:nth-child(odd) {
+  animation-name: slideInLeft;
+}
+
+.logo-slider__item:nth-child(even) {
+  animation-name: slideInRight;
 }
 
 .logo-slider__item:hover {
@@ -1510,7 +1589,7 @@ p {
   }
 
   .ai-assistant {
-    bottom: 20px;
+    bottom: 90px;
     right: 20px;
     width: 48px;
     height: 48px;
