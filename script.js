@@ -180,14 +180,50 @@
   }
 
   // ==========================================
-  // AI Assistant button toggle
+  // AI Assistant chat box
   // ==========================================
   const aiAssistant = document.querySelector('.ai-assistant');
-  if (aiAssistant) {
+  const aiChatBox = document.getElementById('aiChatBox');
+  const aiChatClose = document.getElementById('aiChatClose');
+  const aiChatForm = document.getElementById('aiChatForm');
+  const aiChatInput = document.getElementById('aiChatInput');
+  const aiChatMessages = document.getElementById('aiChatMessages');
+
+  if (aiAssistant && aiChatBox) {
     aiAssistant.addEventListener('click', function() {
-      // Placeholder for AI assistant toggle
-      // In a real implementation, this would open an AI chat window
-      aiAssistant.classList.toggle('ai-assistant--active');
+      aiChatBox.classList.toggle('ai-chat__box--open');
+      if (aiChatBox.classList.contains('ai-chat__box--open')) {
+        aiChatInput.focus();
+      }
+    });
+  }
+
+  if (aiChatClose && aiChatBox) {
+    aiChatClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      aiChatBox.classList.remove('ai-chat__box--open');
+    });
+  }
+
+  if (aiChatForm) {
+    aiChatForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const message = aiChatInput.value.trim();
+      if (!message) return;
+
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'ai-chat__message ai-chat__message--user';
+      userMsg.textContent = message;
+      aiChatMessages.appendChild(userMsg);
+
+      aiChatInput.value = '';
+      aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+
+      // Redirect to contact page after a brief delay
+      setTimeout(function() {
+        window.location.href = 'https://wisetechnologiesryk.com/contact/';
+      }, 800);
     });
   }
 
